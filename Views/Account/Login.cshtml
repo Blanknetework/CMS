@@ -1,0 +1,40 @@
+@using ModernCMS.Models
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_LoginLayout";
+}
+
+<div class="login-container">
+    <div class="login-header">
+        <h1>Modern CMS</h1>
+        <p>Admin Dashboard Login</p>
+    </div>
+    <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]">
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Add animation to error messages
+        document.querySelectorAll('.text-danger').forEach(element => {
+            if (element.textContent.trim() !== '') {
+                element.style.animation = 'shake 0.5s';
+            }
+        });
+    </script>
+} 

@@ -1,0 +1,11 @@
+@model (string Title, string Value, string Icon, string Color)
+
+<div class="dashboard-card" style="--card-color: @Model.Color">
+    <div class="card-icon">
+        <i class="@Model.Icon"></i>
+    </div>
+    <div class="card-content">
+        <h3>@Model.Title</h3>
+        <p class="card-value">@Model.Value</p>
+    </div>
+</div> 

@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "zbRFc848nbHVD3T3up2rxSSzgrP5m/IdTGGuDDlE02k=",
+  "Source": "ModernCMS",
+  "BasePath": "_content/ModernCMS",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ModernCMS\\wwwroot",
+      "Source": "ModernCMS",
+      "ContentRoot": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\",
+      "BasePath": "_content/ModernCMS",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\css\\admin.css",
+      "SourceId": "ModernCMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\",
+      "BasePath": "_content/ModernCMS",
+      "RelativePath": "css/admin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin.css"
+    }
+  ]
+}

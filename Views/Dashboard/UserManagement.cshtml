@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "User Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="user-management-container">
+    <div class="page-header">
+        <h1>User Management</h1>
+        <button class="btn btn-primary"><i class="fas fa-user-plus"></i> Add New User</button>
+    </div>
+
+    <div class="search-filters">
+        <div class="search-input">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search users..." class="form-control" id="usersSearch" />
+        </div>
+        <select class="form-control" id="roleFilter">
+            <option>All Roles</option>
+            <option>Administrator</option>
+            <option>Editor</option>
+            <option>Author</option>
+        </select>
+        <select class="form-control" id="statusFilter">
+            <option>All Status</option>
+            <option>Active</option>
+            <option>Inactive</option>
+        </select>
+    </div>
+
+    <div class="users-grid">
+        <div class="not-found-message" style="display: none;">
+            <i class="fas fa-search"></i>
+            <p>No users found matching your search.</p>
+        </div>
+        @for (int i = 1; i <= 6; i++)
+        {
+            <div class="user-card">
+                <div class="user-card-header">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <h3>User @i</h3>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                    <div class="user-status @(i % 2 == 0 ? "active" : "inactive")">
+                        @(i % 2 == 0 ? "Active" : "Inactive")
+                    </div>
+                </div>
+                <div class="user-details">
+                    <p><i class="fas fa-envelope"></i> user@example.com</p>
+                    <p><i class="fas fa-clock"></i> Last login: @DateTime.Now.AddDays(-i).ToString("MMM dd, yyyy")</p>
+                </div>
+                <div class="user-actions">
+                    <button class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="btn btn-sm btn-info"><i class="fas fa-key"></i> Reset Password</button>
+                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+            </div>
+        }
+    </div>
+</div> 

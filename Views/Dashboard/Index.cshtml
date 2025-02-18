@@ -1,0 +1,115 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<div class="dashboard-container">
+    <div class="page-header">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="dashboard-stats">
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <div class="stat-icon">
+                    <i class="fas fa-file"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>24</h3>
+                    <p>Total Pages</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <div class="stat-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>156</h3>
+                    <p>Media Items</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>12</h3>
+                    <p>Active Users</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <div class="stat-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>2.4K</h3>
+                    <p>Page Views</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="recent-section">
+            <div class="recent-header">
+                <h2><i class="fas fa-clock"></i> Recent Pages</h2>
+                <a href="/Dashboard/Pages" class="btn btn-secondary">View All</a>
+            </div>
+            <ul class="recent-list">
+                <li class="recent-item">
+                    <div class="recent-item-icon">
+                        <i class="fas fa-file"></i>
+                    </div>
+                    <div class="recent-item-content">
+                        <h3 class="recent-item-title">Homepage</h3>
+                        <div class="recent-item-meta">
+                            <span><i class="fas fa-calendar"></i> Updated: 2 hours ago</span>
+                            <span><i class="fas fa-user"></i> Admin</span>
+                            <span class="status-badge published">Published</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="recent-item">
+                    <div class="recent-item-icon">
+                        <i class="fas fa-file"></i>
+                    </div>
+                    <div class="recent-item-content">
+                        <h3 class="recent-item-title">About Us</h3>
+                        <div class="recent-item-meta">
+                            <span><i class="fas fa-calendar"></i> Updated: Yesterday</span>
+                            <span><i class="fas fa-user"></i> Editor</span>
+                            <span class="status-badge draft">Draft</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="recent-section">
+            <div class="recent-header">
+                <h2><i class="fas fa-images"></i> Recent Media</h2>
+                <a href="/Dashboard/MediaLibrary" class="btn btn-secondary">View All</a>
+            </div>
+            <div class="recent-media-grid">
+                @for (int i = 1; i <= 6; i++)
+                {
+                    <div class="recent-media-item">
+                        <img src="https://picsum.photos/200/200?random=@i" alt="Recent media" class="recent-media-preview">
+                        <div class="recent-media-info">
+                            <span>Image @i.jpg</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div> 

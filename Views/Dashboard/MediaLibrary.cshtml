@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Media Library";
+    Layout = "_AdminLayout";
+}
+
+<div class="media-library-container">
+    <div class="page-header">
+        <h1>Media Library</h1>
+        <button class="btn btn-primary"><i class="fas fa-upload"></i> Upload Media</button>
+    </div>
+
+    <div class="search-filters">
+        <div class="search-input">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search media..." class="form-control" id="mediaSearch" />
+        </div>
+        <select class="form-control" id="typeFilter">
+            <option>All Types</option>
+            <option>Images</option>
+            <option>Videos</option>
+            <option>Documents</option>
+        </select>
+        <select class="form-control" id="sortFilter">
+            <option>Date Added</option>
+            <option>Name</option>
+            <option>Size</option>
+        </select>
+    </div>
+
+    <div class="media-grid">
+        <div class="not-found-message" style="display: none;">
+            <i class="fas fa-search"></i>
+            <p>No media found matching your search.</p>
+        </div>
+        @for (int i = 1; i <= 12; i++)
+        {
+            <div class="media-card" data-type="Images">
+                <div class="media-preview" style="background-image: url('https://picsum.photos/400/300?random=@i')"></div>
+                <div class="media-info">
+                    <h4>Sample Image @(i).jpg</h4>
+                    <p>Added: March @i, 2024</p>
+                </div>
+            </div>
+        }
+    </div>
+</div> 

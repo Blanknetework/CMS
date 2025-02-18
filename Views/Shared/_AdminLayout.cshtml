@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Modern CMS</title>
+    <link rel="stylesheet" href="~/css/admin.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="dark-theme">
+    <div class="admin-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>Modern CMS</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a asp-controller="Dashboard" asp-action="Index"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a asp-controller="Dashboard" asp-action="Pages"><i class="fas fa-file"></i> Pages</a></li>
+                <li><a asp-controller="Dashboard" asp-action="MediaLibrary"><i class="fas fa-images"></i> Media Library</a></li>
+                <li><a asp-controller="Dashboard" asp-action="UserManagement"><i class="fas fa-users"></i> User Management</a></li>
+                <li><a asp-controller="Dashboard" asp-action="Settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" onsubmit="return handleLogout(event)">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-logout" id="logoutButton">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </nav>
+        <main class="content-area">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/js/admin.js"></script>
+    <script src="~/js/search.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> 

@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Pages";
+    Layout = "_AdminLayout";
+}
+
+<div class="pages-container">
+    <div class="page-header">
+        <h1>Pages</h1>
+        <button class="btn btn-primary"><i class="fas fa-plus"></i> New Page</button>
+    </div>
+
+    <div class="search-filters">
+        <div class="search-input">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search pages..." class="form-control" id="pagesSearch" />
+        </div>
+        <select class="form-control" id="statusFilter">
+            <option>All Status</option>
+            <option>Published</option>
+            <option>Draft</option>
+        </select>
+        <select class="form-control" id="sortFilter">
+            <option>Latest Updated</option>
+            <option>Oldest Updated</option>
+            <option>Title A-Z</option>
+            <option>Title Z-A</option>
+        </select>
+    </div>
+
+    <div class="pages-grid">
+        <div class="not-found-message" style="display: none;">
+            <i class="fas fa-search"></i>
+            <p>No pages found matching your search.</p>
+        </div>
+        @for (int i = 1; i <= 5; i++)
+        {
+            <div class="page-card">
+                <div class="page-card-header">
+                    <h3>Sample Page @i</h3>
+                    <span class="status-badge @(i % 2 == 0 ? "published" : "draft")">
+                        @(i % 2 == 0 ? "Published" : "Draft")
+                    </span>
+                </div>
+                <p class="page-excerpt">This is a sample page content for page @i...</p>
+                <div class="page-meta">
+                    <span><i class="fas fa-calendar"></i> Updated: @DateTime.Now.AddDays(-i).ToString("MMM dd, yyyy")</span>
+                    <span><i class="fas fa-user"></i> Admin</span>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+            </div>
+        }
+    </div>
+</div> 
