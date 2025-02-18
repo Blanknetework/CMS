@@ -8,8 +8,8 @@
         <h1>Dashboard</h1>
     </div>
 
-    <div class="dashboard-stats">
-        <div class="stat-card">
+        <div class="dashboard-stats">
+        <div class="stat-card recent-section">
             <div class="stat-card-header">
                 <div class="stat-icon">
                     <i class="fas fa-file"></i>
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="stat-card">
+        <div class="stat-card recent-section">
             <div class="stat-card-header">
                 <div class="stat-icon">
                     <i class="fas fa-images"></i>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="stat-card">
+        <div class="stat-card recent-section">
             <div class="stat-card-header">
                 <div class="stat-icon">
                     <i class="fas fa-users"></i>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="stat-card">
+        <div class="stat-card recent-section">
             <div class="stat-card-header">
                 <div class="stat-icon">
                     <i class="fas fa-eye"></i>
@@ -105,7 +105,7 @@
                     <div class="recent-media-item">
                         <img src="https://picsum.photos/200/200?random=@i" alt="Recent media" class="recent-media-preview">
                         <div class="recent-media-info">
-                            <span>Image @i.jpg</span>
+                            <span>Image @(i.ToString() + ".jpg")</span>
                         </div>
                     </div>
                 }

@@ -128,6 +128,65 @@
     margin-bottom: 2rem;
 }
 
+.stat-card.recent-section {
+    padding: 15px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Colors for each stat card */
+.stat-card.recent-section:nth-child(1) {
+    border-left: 4px solid #3498db; 
+}
+
+.stat-card.recent-section:nth-child(2) {
+    border-left: 4px solid #2ecc71; 
+}
+
+.stat-card.recent-section:nth-child(3) {
+    border-left: 4px solid #f1c40f; 
+}
+
+.stat-card.recent-section:nth-child(4) {
+    border-left: 4px solid #e74c3c; 
+}
+
+
+.stat-card.recent-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.stat-card.recent-section:nth-child(1)::before {
+    background: linear-gradient(145deg, #3498db, transparent);
+}
+
+.stat-card.recent-section:nth-child(2)::before {
+    background: linear-gradient(145deg, #2ecc71, transparent);
+}
+
+.stat-card.recent-section:nth-child(3)::before {
+    background: linear-gradient(145deg, #f1c40f, transparent);
+}
+
+.stat-card.recent-section:nth-child(4)::before {
+    background: linear-gradient(145deg, #e74c3c, transparent);
+}
+
+
+.stat-card-header {
+    position: relative;
+    z-index: 1;
+}
+
+
 .dashboard-card {
     background-color: var(--secondary-color);
     border-radius: 8px;
@@ -155,6 +214,8 @@
     font-weight: bold;
     margin: 0;
 }
+
+
 
 /* Dashboard Grid */
 .dashboard-grid {
@@ -800,4 +861,40 @@ input[type="color"] {
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     font-size: 0.8rem;
     color: white;
+}
+
+
+/*Notif styling*/
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notification.success {
+    background-color: #2ecc71;
+}
+
+.notification.error {
+    background-color: #e74c3c;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

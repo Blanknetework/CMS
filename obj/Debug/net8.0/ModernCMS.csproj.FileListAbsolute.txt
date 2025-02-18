@@ -132,3 +132,4 @@ C:\Users\My PC\OneDrive\Desktop\CMS\obj\Debug\net8.0\refint\ModernCMS.dll
 C:\Users\My PC\OneDrive\Desktop\CMS\obj\Debug\net8.0\ModernCMS.pdb
 C:\Users\My PC\OneDrive\Desktop\CMS\obj\Debug\net8.0\ModernCMS.genruntimeconfig.cache
 C:\Users\My PC\OneDrive\Desktop\CMS\obj\Debug\net8.0\ref\ModernCMS.dll
+C:\Users\My PC\OneDrive\Desktop\CMS\obj\Debug\net8.0\ModernCMS.sourcelink.json

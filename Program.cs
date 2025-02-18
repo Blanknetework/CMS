@@ -49,6 +49,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
+    
+
 // Seed the admin user
 using (var scope = app.Services.CreateScope())
 {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Dq2f56BYWrbA5FgegcoqD9EaaV7gnWwBcrbR14c25jE=",
+  "Hash": "2P1ZmOR/naR+nDLucTA6GqwGIBbuF2zREABHtkPKrlE=",
   "Source": "ModernCMS",
   "BasePath": "_content/ModernCMS",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\admin.js"
+    },
+    {
+      "Identity": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\js\\dashboard.js",
+      "SourceId": "ModernCMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\",
+      "BasePath": "_content/ModernCMS",
+      "RelativePath": "js/dashboard.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\dashboard.js"
     },
     {
       "Identity": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\js\\search.js",

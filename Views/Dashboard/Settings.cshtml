@@ -1,12 +1,17 @@
 @{
     ViewData["Title"] = "Settings";
     Layout = "_AdminLayout";
+    
 }
+
+@Html.AntiForgeryToken()
 
 <div class="settings-container">
     <div class="page-header">
         <h1>Settings</h1>
-        <button class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+        <button type="submit" class="btn btn-primary" id="saveSettingsBtn">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
     </div>
 
     <div class="settings-grid">

@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\js\\admin.js"
     },
     {
+      "Id": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\js\\dashboard.js"
+    },
+    {
       "Id": "C:\\Users\\My PC\\OneDrive\\Desktop\\CMS\\wwwroot\\js\\search.js",
       "PackagePath": "staticwebassets\\js\\search.js"
     },

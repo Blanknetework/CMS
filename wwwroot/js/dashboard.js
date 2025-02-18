@@ -1,70 +1,65 @@
-function handleLogout(event) {
-    event.preventDefault();
-    const form = event.target;
-    const button = form.querySelector('#logoutButton');
-    
-    // Disable button and show loading state
-    button.disabled = true;
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
-
-    // Submit the form
-    fetch(form.action, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = '/Account/Login';
-        } else {
-            throw new Error('Logout failed');
-        }
-    })
-    .catch(error => {
-        // Reset button state if there's an error
-        button.disabled = false;
-        button.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
-        console.error('Logout error:', error);
-    });
-
-    return false;
-} 
-
-// Save button, new page, uplaod button, etc.
 // Settings Save Changes function
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSettingsPage();
+});
+
+function initializeSettingsPage() {
+    const settingsForm = document.getElementById('settingsForm');
+    if (settingsForm) {
+        settingsForm.addEventListener('submit', saveSettings);
+    }
+}
+
 function saveSettings(event) {
     event.preventDefault();
-    const settingsForm = document.querySelector('#settingsForm');
-    const formData = new FormData(settingsForm);
+    const form = event.target;
+    const saveButton = form.querySelector('#saveSettingsBtn');
+    const formData = new FormData(form);
 
     // Show loading state
-    const saveButton = event.target;
     const originalText = saveButton.innerHTML;
     saveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
     saveButton.disabled = true;
 
     fetch('/api/settings', {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+        }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+    })
     .then(data => {
-        // Show success message
         showNotification('Settings saved successfully', 'success');
     })
     .catch(error => {
-        // Show error message
+        console.error('Settings error:', error);
         showNotification('Error saving settings', 'error');
     })
     .finally(() => {
-        // Reset button state
         saveButton.innerHTML = originalText;
         saveButton.disabled = false;
     });
 }
 
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
 // Media Upload function
 function uploadMedia(event) {
     event.preventDefault();
@@ -81,7 +76,6 @@ function uploadMedia(event) {
             formData.append('files', file);
         });
 
-        // Show loading state
         const uploadButton = document.querySelector('#uploadMediaBtn');
         const originalText = uploadButton.innerHTML;
         uploadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
@@ -89,15 +83,24 @@ function uploadMedia(event) {
 
         fetch('/api/media/upload', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+            }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
         .then(data => {
             showNotification('Media uploaded successfully', 'success');
-            refreshMediaGrid(); // Function to refresh the media grid
+            if (typeof refreshMediaGrid === 'function') {
+                refreshMediaGrid();
+            }
         })
         .catch(error => {
             showNotification('Error uploading media', 'error');
+            console.error('Upload error:', error);
         })
         .finally(() => {
             uploadButton.innerHTML = originalText;
@@ -119,19 +122,24 @@ function createNewPage(event) {
     fetch('/api/pages/new', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
         },
         body: JSON.stringify({
             title: 'New Page',
             status: 'draft'
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+    })
     .then(data => {
         window.location.href = `/dashboard/pages/edit/${data.id}`;
     })
     .catch(error => {
         showNotification('Error creating page', 'error');
+        console.error('Page creation error:', error);
         button.innerHTML = originalText;
         button.disabled = false;
     });
@@ -139,7 +147,6 @@ function createNewPage(event) {
 
 // Helper function for notifications
 function showNotification(message, type) {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.innerHTML = `
@@ -147,11 +154,10 @@ function showNotification(message, type) {
         <span>${message}</span>
     `;
 
-    // Add to document
     document.body.appendChild(notification);
 
-    // Remove after 3 seconds
     setTimeout(() => {
-        notification.remove();
+        notification.classList.add('fade-out');
+        setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
